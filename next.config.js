@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Next.js automatically loads environment variables from .env.local
-  // No need to manually configure them here
+  // Ensure compatibility with Vercel deployment
+  output: 'standalone',
+  // External packages for server components
+  serverExternalPackages: ['mongoose'],
+  // Ensure proper build output
+  trailingSlash: false,
 }
 
 module.exports = nextConfig
