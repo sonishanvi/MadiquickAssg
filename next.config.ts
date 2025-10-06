@@ -9,10 +9,15 @@ const nextConfig: NextConfig = {
   trailingSlash: false,
   // Enable static optimization
   swcMinify: true,
+  // Disable telemetry to prevent build issues
+  telemetry: false,
   // Ensure proper build process
-  output: undefined, // Let Vercel handle the output
-  // Disable static optimization for API routes during build
-  generateStaticParams: false,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: false,
+  },
 };
 
 export default nextConfig;

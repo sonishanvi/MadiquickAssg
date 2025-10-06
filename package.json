@@ -33,7 +33,8 @@
     "clean": "rm -rf .next out",
     "preview": "next build && next start",
     "security-check": "node scripts/security-check.js",
-    "pre-commit": "npm run security-check && npm run lint && npm run type-check"
+    "pre-commit": "npm run security-check && npm run lint && npm run type-check",
+    "postbuild": "node scripts/ensure-routes-manifest.js"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.6",
