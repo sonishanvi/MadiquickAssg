@@ -34,7 +34,7 @@
     "preview": "next build && next start",
     "security-check": "node scripts/security-check.js",
     "pre-commit": "npm run security-check && npm run lint && npm run type-check",
-    "postbuild": "node scripts/ensure-routes-manifest.js"
+    "postbuild": "echo 'Build completed successfully'"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.6",
