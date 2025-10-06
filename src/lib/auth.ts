@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs';
 const JWT_SECRET = process.env.JWT_SECRET;
 
 if (!JWT_SECRET) {
-  throw new Error('Please define the JWT_SECRET environment variable inside .env.local');
+  console.warn('JWT_SECRET environment variable is not defined. Authentication will not work properly.');
 }
 
 // Type assertion to ensure JWT_SECRET is not undefined
@@ -21,6 +21,9 @@ export interface JWTPayload {
  * @returns JWT token string
  */
 export function generateToken(payload: JWTPayload): string {
+  if (!JWT_SECRET) {
+    throw new Error('JWT_SECRET environment variable is not defined');
+  }
   return jwt.sign(payload, jwtSecret, { expiresIn: '7d' });
 }
 
@@ -31,6 +34,9 @@ export function generateToken(payload: JWTPayload): string {
  */
 export function verifyToken(token: string): JWTPayload | null {
   try {
+    if (!JWT_SECRET) {
+      throw new Error('JWT_SECRET environment variable is not defined');
+    }
     const decoded = jwt.verify(token, jwtSecret) as JWTPayload;
     return {
       userId: decoded.userId,
