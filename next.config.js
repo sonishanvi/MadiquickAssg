@@ -1,9 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  // External packages for server components
-  serverExternalPackages: ['mongoose'],
-  // Ensure proper build output
-  trailingSlash: false,
-}
+const nextConfig = {}
 
 module.exports = nextConfig
